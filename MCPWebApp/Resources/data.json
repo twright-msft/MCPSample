@@ -1,0 +1,102 @@
+{
+  "mcp_resource": {
+    "name": "Sample JSON Data",
+    "description": "Demonstration JSON resource for Model Context Protocol",
+    "version": "1.0.0",
+    "created": "2025-06-23T00:00:00Z",
+    "type": "sample_data"
+  },
+  "system_info": {
+    "protocol": "Model Context Protocol",
+    "server": "MCPWebApp",
+    "capabilities": ["tools", "resources", "prompts"],
+    "tools_available": [
+      "calculator",
+      "echo", 
+      "word_counter"
+    ]
+  },
+  "sample_data": {
+    "users": [
+      {
+        "id": 1,
+        "name": "Alice Johnson",
+        "email": "alice@example.com",
+        "role": "developer",
+        "projects": ["mcp-calculator", "web-api"],
+        "active": true
+      },
+      {
+        "id": 2,
+        "name": "Bob Smith",
+        "email": "bob@example.com", 
+        "role": "tester",
+        "projects": ["mcp-calculator"],
+        "active": true
+      },
+      {
+        "id": 3,
+        "name": "Carol Davis",
+        "email": "carol@example.com",
+        "role": "manager",
+        "projects": ["mcp-calculator", "web-api", "documentation"],
+        "active": false
+      }
+    ],
+    "projects": [
+      {
+        "id": "mcp-calculator",
+        "name": "MCP Calculator System",
+        "description": "Complete calculator implementation using Model Context Protocol",
+        "status": "active",
+        "components": ["web-app", "console-client", "test-harness"],
+        "test_results": {
+          "total_tests": 21,
+          "passed": 21,
+          "failed": 0,
+          "success_rate": 100.0
+        }
+      },
+      {
+        "id": "web-api",
+        "name": "MCP Web API",
+        "description": "RESTful API implementing MCP protocol",
+        "status": "active",
+        "endpoints": [
+          "/api/mcp/capabilities",
+          "/api/mcp/tools/list",
+          "/api/mcp/tools/call",
+          "/api/mcp/resources/list",
+          "/api/mcp/resources/read",
+          "/api/mcp/prompts/list",
+          "/api/mcp/prompts/get"
+        ]
+      }
+    ],
+    "calculations": [
+      {"expression": "10 + 5", "result": 15},
+      {"expression": "7.5 * 2.3", "result": 17.25},
+      {"expression": "100 / 4", "result": 25},
+      {"expression": "50 - 12", "result": 38}
+    ],
+    "text_analysis": {
+      "sample_phrase": "The quick brown fox jumps over the lazy dog",
+      "word_count": 9,
+      "character_count": 43,
+      "character_count_no_spaces": 35
+    }
+  },
+  "configuration": {
+    "server_port": 5272,
+    "environment": "development",
+    "logging_enabled": true,
+    "swagger_enabled": true,
+    "cors_enabled": true
+  },
+  "metadata": {
+    "generated_by": "MCP Calculator System",
+    "last_updated": "2025-06-23T12:00:00Z",
+    "format_version": "1.0",
+    "encoding": "UTF-8"
+  }
+}

@@ -1,0 +1,33 @@
+MCP Sample Text Resource
+========================
+
+This is a sample text file that demonstrates how the Model Context Protocol (MCP) 
+can serve text resources through its API endpoints.
+
+About MCP:
+The Model Context Protocol is a universal, open protocol that enables seamless 
+integration between AI tools and data sources. It standardizes how applications 
+can expose their data and functionality to Large Language Models (LLMs) and 
+other AI systems.
+
+Key Features:
+- Standardized interface for tools, resources, and prompts
+- Language-agnostic protocol design
+- Support for real-time data access
+- Extensible architecture for custom integrations
+
+Sample Data:
+Here's some sample text content that could be processed by various MCP tools:
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor 
+incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
+nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Numbers for calculation: 42, 3.14, 100, 2.718, 1337
+Operations: addition (+), subtraction (-), multiplication (*), division (/)
+
+Word count test: This sentence contains exactly eight words for testing purposes.
+
+Character count test: The quick brown fox jumps over the lazy dog. (43 chars)
+
+End of sample text resource.

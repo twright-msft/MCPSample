@@ -1,0 +1,165 @@
+﻿@{
+    ViewData["Title"] = ViewBag.Title ?? "MCP API Server";
+}
+
+<div class="text-center">
+    <h1 class="display-4">MCP API Server</h1>
+    <p class="lead">@ViewBag.Description</p>
+    
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">🛠️ Tools</h5>
+                    <p class="card-text">Access callable tools like echo and calculator</p>
+                    <code>POST /api/mcp/tools/list</code>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">📁 Resources</h5>
+                    <p class="card-text">Read and access various file resources</p>
+                    <code>POST /api/mcp/resources/list</code>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">💬 Prompts</h5>
+                    <p class="card-text">Get structured prompts for various tasks</p>
+                    <code>POST /api/mcp/prompts/list</code>
+                </div>
+            </div>
+        </div>
+    </div>    <div class="mt-5">
+        <div class="card mx-auto" style="max-width: 600px;">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">🧪 Test Echo Tool</h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="echoInput" class="form-label">Enter text to echo:</label>
+                    <input type="text" class="form-control" id="echoInput" placeholder="Type something here..." />
+                </div>
+                <button type="button" class="btn btn-success" id="testEchoBtn">Test Echo Tool</button>
+                <div class="mt-3">
+                    <div id="echoResult" class="alert" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>    <div class="mt-4">
+        <div class="card mx-auto" style="max-width: 600px;">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0">🛠️ Available Tools</h5>
+            </div>
+            <div class="card-body">
+                <p class="mb-3">Click the button below to fetch and display all available MCP tools:</p>
+                <button type="button" class="btn btn-info" id="listToolsBtn">List Available Tools</button>
+                <div class="mt-3">
+                    <div id="toolsList" class="alert" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <div class="card mx-auto" style="max-width: 600px;">
+            <div class="card-header bg-warning text-dark">
+                <h5 class="mb-0">🧮 Test Calculator Tool</h5>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <label for="calcA" class="form-label">First Number:</label>
+                        <input type="number" class="form-control" id="calcA" value="10" step="any" />
+                    </div>                    <div class="col-md-3">
+                        <label for="calcOperation" class="form-label">Operation:</label>
+                        <select class="form-select" id="calcOperation">
+                            <option value="+">+ (Add)</option>
+                            <option value="-">- (Subtract)</option>
+                            <option value="*">* (Multiply)</option>
+                            <option value="/">/ (Divide)</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="calcB" class="form-label">Second Number:</label>
+                        <input type="number" class="form-control" id="calcB" value="5" step="any" />
+                    </div>
+                    <div class="col-md-3 d-flex align-items-end">
+                        <button type="button" class="btn btn-warning w-100" id="testCalcBtn">Calculate</button>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <div id="calcResult" class="alert" style="display: none;"></div>
+                </div>
+            </div>        </div>
+    </div>
+    
+    <div class="mt-4">
+        <div class="card mx-auto" style="max-width: 800px;">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0">📊 Test Word Counter Tool</h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="wordCountText" class="form-label">Text to Analyze:</label>
+                    <textarea class="form-control" id="wordCountText" rows="4" placeholder="Enter text to count words, characters, and sentences...">The quick brown fox jumps over the lazy dog. This is a sample sentence for testing purposes!</textarea>
+                </div>
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="includeSpaces" checked>
+                        <label class="form-check-label" for="includeSpaces">
+                            Include spaces in character count
+                        </label>
+                    </div>
+                </div>
+                <div class="d-grid">
+                    <button type="button" class="btn btn-success" id="testWordCountBtn">Analyze Text</button>
+                </div>
+                <div class="mt-3">
+                    <div id="wordCountResult" class="alert" style="display: none;"></div>
+                </div>
+            </div>
+        </div>    </div>
+      <div class="mt-4">
+        <div class="card mx-auto" style="max-width: 600px;">
+            <div class="card-header bg-secondary text-white">
+                <h5 class="mb-0">📁 Available Resource Files</h5>
+            </div>
+            <div class="card-body">
+                <p class="mb-3">Resources served by this MCP server:</p>
+                <button type="button" class="btn btn-secondary mb-3" id="listResourcesBtn">Load Available Resources</button>
+                <div id="resourcesList" style="display: none;">
+                    <div class="d-grid gap-2" id="resourcesContainer">
+                        <!-- Dynamic resources will be loaded here -->
+                    </div>
+                    <div class="mt-3">
+                        <small class="text-muted">
+                            Resources can also be accessed through the MCP API using 
+                            <code>POST /api/mcp/resources/read</code> with the URIs shown above.
+                        </small>
+                    </div>
+                </div>
+                <div id="resourcesError" class="alert alert-danger" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mt-4">
+        <a href="/api-docs" class="btn btn-primary btn-lg">📖 View API Documentation</a>
+        <a href="/api/mcp/capabilities" class="btn btn-outline-secondary btn-lg ml-2">⚡ Check Capabilities</a>
+    </div>
+    
+    <div class="mt-4">
+        <small class="text-muted">
+            Learn more about the <a href="https://modelcontextprotocol.io/" target="_blank">Model Context Protocol</a>
+        </small>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/site.js" asp-append-version="true"></script>
+}
