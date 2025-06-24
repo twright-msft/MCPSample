@@ -34,14 +34,27 @@ class Program
         new TestCase("Decimal multiplication", "2.5", "*", "4.0", "10"),
         new TestCase("Negative multiplication", "-3", "*", "4", "-12"),
         new TestCase("Zero multiplication", "999", "*", "0", "0"),
-        new TestCase("Fractional multiplication", "0.5", "*", "8", "4"),
-
-        // Division tests
+        new TestCase("Fractional multiplication", "0.5", "*", "8", "4"),        // Division tests
         new TestCase("Basic division", "20", "/", "4", "5"),
         new TestCase("Decimal division", "15.0", "/", "3.0", "5"),
         new TestCase("Negative division", "-12", "/", "3", "-4"),
         new TestCase("Fractional result", "7", "/", "2", "3.5"),
         new TestCase("Division by one", "42", "/", "1", "42"),
+
+        // Exponentiation tests
+        new TestCase("Basic exponentiation", "2", "^", "3", "8"),
+        new TestCase("Alternative power notation", "3", "**", "4", "81"),
+        new TestCase("Power of zero", "5", "^", "0", "1"),
+        new TestCase("Power of one", "7", "^", "1", "7"),
+        new TestCase("Square calculation", "9", "^", "2", "81"),
+        new TestCase("Cube calculation", "4", "^", "3", "64"),
+        new TestCase("Square root", "16", "^", "0.5", "4"),
+        new TestCase("Square root of 9", "9", "**", "0.5", "3"),
+        new TestCase("Cube root", "27", "^", "0.333333", "3"),
+        new TestCase("Decimal base power", "2.5", "^", "2", "6.25"),
+        new TestCase("Negative base even power", "-3", "^", "2", "9"),
+        new TestCase("Negative base odd power", "-2", "^", "3", "-8"),
+        new TestCase("Large exponentiation", "10", "^", "3", "1000"),
 
         // Edge cases (should fail gracefully)
         new TestCase("Division by zero", "10", "/", "0", "ERROR_EXPECTED")

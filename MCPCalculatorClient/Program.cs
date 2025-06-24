@@ -79,14 +79,12 @@ class Program
         {
             if (!numberOnly) Console.WriteLine($"❌ Invalid first number: {args[0]}");
             return false;
-        }
-
-        // Parse operation
+        }        // Parse operation
         operation = args[1];
-        if (operation != "+" && operation != "-" && operation != "*" && operation != "/")
+        if (operation != "+" && operation != "-" && operation != "*" && operation != "/" && operation != "^" && operation != "**")
         {
             if (!numberOnly) Console.WriteLine($"❌ Invalid operation: {operation}");
-            if (!numberOnly) Console.WriteLine("Valid operations: +, -, *, /");
+            if (!numberOnly) Console.WriteLine("Valid operations: +, -, *, /, ^, **");
             return false;
         }
 
@@ -196,7 +194,7 @@ class Program
         Console.WriteLine();
         Console.WriteLine("🔧 Parameters:");
         Console.WriteLine("  first_number  : First operand (decimal number)");
-        Console.WriteLine("  operation     : Mathematical operation (+, -, *, /)");
+        Console.WriteLine("  operation     : Mathematical operation (+, -, *, /, ^, **)");
         Console.WriteLine("  second_number : Second operand (decimal number)");
         Console.WriteLine("  api_url       : Optional. MCP API base URL (default: http://localhost:5202)");
         Console.WriteLine("  -NumberOnly   : Optional. Output only the numeric result, no other text");

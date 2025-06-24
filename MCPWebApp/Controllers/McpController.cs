@@ -67,13 +67,13 @@ public class McpController : ControllerBase
             },            new()
             {
                 Name = "calculator",
-                Description = "Perform basic mathematical calculations",
+                Description = "Perform basic mathematical calculations including exponentiation",
                 InputSchema = new
                 {
                     type = "object",
                     properties = new
                     {
-                        operation = new { type = "string", description = "Mathematical operation (+, -, *, /)" },
+                        operation = new { type = "string", description = "Mathematical operation (+, -, *, /, ^, **)" },
                         a = new { type = "number", description = "First operand" },
                         b = new { type = "number", description = "Second operand" }
                     },
@@ -434,17 +434,17 @@ public class McpController : ControllerBase
         catch (Exception ex)
         {
             throw new ArgumentException($"Invalid numeric arguments: {ex.Message}");
-        }
-
-        var result = operation switch
+        }        var result = operation switch
         {
             "+" => a + b,
             "-" => a - b,
             "*" => a * b,
             "/" when b != 0 => a / b,
             "/" => throw new DivideByZeroException("Cannot divide by zero"),
+            "^" => Math.Pow(a, b),
+            "**" => Math.Pow(a, b),
             _ => throw new ArgumentException($"Unsupported operation: {operation}")
-        };        return new List<McpContent>
+        };return new List<McpContent>
         {
             new() { Type = "text", Text = $"Result: {a} {operation} {b} = {result}" }
         };
